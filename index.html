@@ -1,4 +1,4 @@
-<title>Eduardo Schwanke Nutrição</title>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Nutricionista esportivo em Curitiba. Nutrição inteligente, baseada em ciência e sem terrorismo alimentar: faça o diagnóstico gratuito e conheça o Método Revive."><meta name="theme-color" content="#12332F"><meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:title" content="Eduardo Schwanke · Nutrição Inteligente"><meta property="og:description" content="Nutricionista esportivo em Curitiba. Nutrição inteligente, baseada em ciência e sem terrorismo alimentar: faça o diagnóstico gratuito e conheça o Método Revive."><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%22-104%20-104%20208%20208%22%3E%3Crect%20x%3D%22-104%22%20y%3D%22-104%22%20width%3D%22208%22%20height%3D%22208%22%20rx%3D%2240%22%20fill%3D%22%2312332F%22/%3E%3Cpath%20fill-rule%3D%22evenodd%22%20fill%3D%22%23F3EFE6%22%20d%3D%22M-80%200a80%2080%200%201%200%20160%200a80%2080%200%201%200%20-160%200Z%20M-70.8%20-6a64.8%2064.8%200%201%200%20129.6%200a64.8%2064.8%200%201%200%20-129.6%200Z%22/%3E%3Ccircle%20cx%3D%2226.8%22%20cy%3D%2226.8%22%20r%3D%2212%22%20fill%3D%22%23B8794A%22/%3E%3C/svg%3E"><style>:root{color-scheme:light;-webkit-text-size-adjust:100%;text-size-adjust:100%;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.4 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Eduardo Schwanke Nutrição</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
 <style>
@@ -136,6 +136,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .sc:hover{border-color:rgba(243,239,230,.5)}
 .sc.sel{background:var(--copper);border-color:var(--copper);color:#fff}
 .legend{display:flex;justify-content:space-between;gap:24px;margin-top:12px;font-size:13px;color:rgba(243,239,230,.75)}
+@media(max-width:640px){.scale{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:26px}.sc{aspect-ratio:auto;height:48px;max-height:none;border-radius:14px;font-size:17px}.legend{font-size:12.5px}}
 .legend span:last-child{text-align:right}
 .q-actions{margin-top:30px}
 
@@ -269,7 +270,8 @@ footer{background:var(--forest-deep);color:var(--bone);padding-block:56px 40px;f
 .legal{margin-top:40px;padding-top:22px;border-top:1px solid var(--line-dark);display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;opacity:.65}
 @media(max-width:760px){.foot{grid-template-columns:1fr}}
 .float{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:25;box-shadow:0 12px 30px rgba(8,20,18,.35);transition:opacity .3s,transform .3s}
-body.at-hero .float{opacity:0;transform:translateY(20px);pointer-events:none}
+body.at-hero .float,body.at-plans .float,body.at-foot .float,body.scroll-down .float{opacity:0;transform:translateY(20px);pointer-events:none}
+@media(max-width:640px){.float{padding:13px 18px;font-size:11px;letter-spacing:.14em;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px))}.eyebrow{letter-spacing:.2em}}
 @media(min-width:1121px){.float{display:none}}
 
 /* minha história */
@@ -547,6 +549,9 @@ function reveal(){if(io)return;io=new IntersectionObserver(es=>es.forEach(e=>{if
 const ring=$('.hero-fig .ring');
 addEventListener('scroll',()=>{if(!still&&ring)ring.style.transform='translateX(-50%) rotate('+(scrollY*.12)+'deg)';},{passive:true});
 new IntersectionObserver(es=>es.forEach(e=>document.body.classList.toggle('at-hero',e.isIntersecting)),{threshold:.15}).observe(hero);
+[['at-plans','#planos'],['at-foot','footer']].forEach(([c,q])=>{const t=$(q);if(t)new IntersectionObserver(es=>es.forEach(e=>document.body.classList.toggle(c,e.isIntersecting)),{threshold:0}).observe(t);});
+/* no celular o botão flutuante some enquanto a pessoa lê (rolando pra baixo) e volta quando ela sobe */
+let lastY=scrollY;addEventListener('scroll',()=>{const y=scrollY,d=y-lastY;if(Math.abs(d)>8){document.body.classList.toggle('scroll-down',d>0&&innerWidth<=640);lastY=y;}},{passive:true});
 
 /* ---------- entrada: bowl -> marca -> página ---------- */
 const intro=$('#intro');document.body.classList.add('locked');
@@ -558,3 +563,4 @@ function start(){if(started)return;started=true;intro.classList.add('go');setTim
 $('#stage').addEventListener('click',start);
 $('#skip').addEventListener('click',()=>{if(started)return;started=true;openSite(0);});
 </script>
+</body></html>
