@@ -91,6 +91,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .links a:hover,.links a[aria-current]{opacity:1;color:var(--copper-light)}
 .nav .btn{padding:12px 20px;font-size:11.5px}
 @media(max-width:1120px){.links{display:none}}
+@media(max-width:380px){.logo b{font-size:12px!important;letter-spacing:.1em!important}.nav .btn{padding:9px 12px!important;font-size:10.5px!important;letter-spacing:.08em!important}.logo svg{width:26px;height:26px}}
 @media(max-width:440px){.logo small{display:none}.logo b{font-size:14px;letter-spacing:.16em}.nav .btn{padding:10px 14px;letter-spacing:.12em}.nav .btn .ic{display:none}}
 
 /* hero + quiz */
@@ -103,7 +104,25 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .hero.active .wrap{grid-template-columns:minmax(0,1fr)}
 .hero.active .hero-fig{display:none}
 .hero.active .quiz{max-width:780px;margin:0 auto;width:100%}
-@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.quiz{padding-bottom:12px}.hero-fig img{max-height:420px;width:auto}.hero-fig .ring{width:min(96%,400px);top:4%}}
+.lede-short{display:none}
+/* celular: capa de revista. Eduardo em destaque no topo, a pergunta entra por cima da foto e o campo do nome fica logo abaixo */
+@media(max-width:860px){
+.hero .wrap{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.hero-fig{order:-1;height:min(50svh,460px);min-height:270px;overflow:hidden;align-items:flex-start;align-self:stretch;margin-inline:calc(-1*max(20px,env(safe-area-inset-left,0px)))}
+.hero-fig img{width:min(94vw,440px);max-height:none;height:auto;margin:3svh auto 0}
+.hero-fig .ring{width:min(92vw,420px);top:5%}
+.hero-fig{-webkit-mask-image:linear-gradient(to bottom,#000 52%,transparent 96%);mask-image:linear-gradient(to bottom,#000 52%,transparent 96%)}
+.hero:not(.active) .quiz{position:relative;z-index:2;margin-top:-104px;padding-top:0;padding-bottom:40px}
+.start{gap:18px}
+.start .eyebrow{display:none}
+.lede-short{display:inline}.lede-long{display:none}
+.start h1{order:1;font-size:clamp(2.35rem,10.4vw,3.2rem)}
+.start .lede{order:3;font-size:15.5px;line-height:1.55}
+.start form{order:4;margin-top:4px}
+.start .meta{display:none}
+.field .btn{flex:1 1 100%;letter-spacing:.12em;padding-inline:20px}
+.hero.active .quiz{padding-top:28px}
+}
 .start{display:flex;flex-direction:column;gap:26px}
 .start form{display:flex;flex-direction:column;gap:12px;max-width:520px}
 .start label{font-size:12px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--copper-light)}
@@ -330,10 +349,10 @@ body.at-hero .float,body.at-plans .float,body.at-foot .float,body.scroll-down .f
 <div class="start q-step">
 <p class="eyebrow">Diagnóstico gratuito · Método Revive</p>
 <h1>O que está travando a sua melhor <em>versão?</em></h1>
-<p class="lede">Responda 11 perguntas rápidas (menos de 2 minutos) e receba um diagnóstico personalizado da sua rotina, sem dieta restritiva e sem terrorismo alimentar.</p>
+<p class="lede"><span class="lede-long">Responda 11 perguntas rápidas (menos de 2 minutos) e receba um diagnóstico personalizado da sua rotina, sem dieta restritiva e sem terrorismo alimentar.</span><span class="lede-short">11 perguntas, menos de 2 minutos: um diagnóstico gratuito da sua rotina, sem dieta restritiva e sem terrorismo alimentar.</span></p>
 <form id="startForm" novalidate>
 <label for="nome">Como posso te chamar?</label>
-<div class="field"><input id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Seu primeiro nome" maxlength="40"><button class="btn btn-solid" type="submit">Começar meu diagnóstico gratuito <svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></button></div>
+<div class="field"><input id="nome" name="nome" type="text" autocomplete="given-name" placeholder="Seu primeiro nome" maxlength="40"><button class="btn btn-solid" type="submit">Começar meu diagnóstico<span class="lede-long">gratuito</span> <svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></button></div>
 <p class="err" id="nomeErr" aria-live="polite"></p>
 <p class="consent">Suas respostas são enviadas ao Eduardo para preparar o seu atendimento. Nada é compartilhado com terceiros.</p>
 </form>
